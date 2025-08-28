@@ -112,13 +112,14 @@ export const MasonryHeaderMasonryItem = ({
         <div className="flex items-center justify-center gap-2 text-xs text-gray-500 dark:text-gray-400">
           <i className="i-mingcute-calendar-line text-sm" />
           <span>
-            {t('gallery.built.at')}
+            {/* {t('gallery.built.at')} */}
+            {t('tmt.update.at')}
             {new Date(BUILT_DATE).toLocaleDateString(i18n.language, {
               year: 'numeric',
               month: 'long',
               day: 'numeric',
             })}
-            {GIT_COMMIT_HASH && (
+            {/* {GIT_COMMIT_HASH && (
               <span className="ml-1">
                 (
                 <a
@@ -131,7 +132,7 @@ export const MasonryHeaderMasonryItem = ({
                 </a>
                 )
               </span>
-            )}
+            )} */}
           </span>
         </div>
       </div>
