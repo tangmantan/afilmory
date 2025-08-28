@@ -1,0 +1,9 @@
+{
+  "storage": {
+    "provider": "s3",
+    "bucket": "tanmantang",
+    "region": "oss-cn-chengdu",
+    "prefix": "travel_img",
+    "endpoint": "https://oss-cn-chengdu.aliyuncs.com"
+  }
+}
