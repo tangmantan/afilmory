@@ -21,7 +21,14 @@ interface RawExifViewerProps {
 type ParsedExifData = Record<string, string | number | boolean | null>
 
 const parseRawExifData = (rawData: string): ParsedExifData => {
-  const lines = rawData.split('\n').filter((line) => line.trim())
+  // 处理编码问题，使用UTF-8解码并替换无效字符
+  const decoder = new TextDecoder('utf-8', { fatal: false });
+  const decodedData = decoder.decode(new Uint8Array(rawData.split('').map(c => c.charCodeAt(0))));
+
+  // 清洗数据，移除控制字符和无效序列
+  // const cleanedData = decodedData.replace(/[\x00-\x1F\x7F]/g, '').replace(/�/g, '');
+
+  const lines = decodedData.split('\n').filter((line) => line.trim())
   const data: ParsedExifData = {}
 
   for (const line of lines) {
@@ -307,13 +314,7 @@ export const RawExifViewer: React.FC<RawExifViewerProps> = ({
       const response = await fetch(currentPhoto.originalUrl)
       const blob = await response.blob()
       const data = await ExifToolManager.parse(blob, currentPhoto.s3Key)
-      
-      // 解决中文乱码：假设原始数据为GBK编码，转换为UTF-8
-      const uint8Array = new Uint8Array(data.split('').map(c => c.charCodeAt(0)));
-      const decoder = new TextDecoder('gbk');
-      const decodedData = decoder.decode(uint8Array);
-      
-      setRawExifData(decodedData || null)
+      setRawExifData(data || null)
       setIsOpen(true)
     } catch (error) {
       console.error('Failed to parse EXIF data:', error)
