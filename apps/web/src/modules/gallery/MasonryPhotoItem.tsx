@@ -321,6 +321,7 @@ export const MasonryPhotoItem = ({
             <div className="mb-3 [&_*]:duration-300">
               <h3 className="mb-2 truncate text-sm font-medium opacity-0 group-hover:opacity-100">
                 {data.title}
+                {console.log(data)}
               </h3>
               {data.description && (
                 <p className="mb-2 line-clamp-2 text-sm text-white/80 opacity-0 group-hover:opacity-100">
