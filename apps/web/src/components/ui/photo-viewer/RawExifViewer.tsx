@@ -307,7 +307,13 @@ export const RawExifViewer: React.FC<RawExifViewerProps> = ({
       const response = await fetch(currentPhoto.originalUrl)
       const blob = await response.blob()
       const data = await ExifToolManager.parse(blob, currentPhoto.s3Key)
-      setRawExifData(data || null)
+      
+      // 解决中文乱码：假设原始数据为GBK编码，转换为UTF-8
+      const uint8Array = new Uint8Array(data.split('').map(c => c.charCodeAt(0)));
+      const decoder = new TextDecoder('gbk');
+      const decodedData = decoder.decode(uint8Array);
+      
+      setRawExifData(decodedData || null)
       setIsOpen(true)
     } catch (error) {
       console.error('Failed to parse EXIF data:', error)
