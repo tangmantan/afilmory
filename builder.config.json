@@ -3,7 +3,7 @@
     "provider": "s3",
     "bucket": "tanmantang",
     "region": "oss-cn-chengdu",
-    "prefix": "tour",
+    "prefix": "picimpact",
     "endpoint": "https://oss-cn-chengdu.aliyuncs.com"
   }
 }
