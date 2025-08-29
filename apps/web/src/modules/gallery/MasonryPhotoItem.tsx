@@ -1,6 +1,7 @@
 import clsx from 'clsx'
 import { m } from 'motion/react'
 import { Fragment, useCallback, useEffect, useRef, useState } from 'react'
+import { ExifToolManager } from '@/lib/exiftool/exiftool'
 import { useTranslation } from 'react-i18next'
 
 import { Thumbhash } from '~/components/ui/thumbhash'
@@ -32,6 +33,7 @@ export const MasonryPhotoItem = ({
   const photoViewer = usePhotoViewer()
   const { t } = useTranslation()
   const [imageLoaded, setImageLoaded] = useState(false)
+  const [imageDescription, setImageDescription] = useState('')
   const [imageError, setImageError] = useState(false)
 
   // Live Photo 相关状态
@@ -45,6 +47,36 @@ export const MasonryPhotoItem = ({
   const videoRef = useRef<HTMLVideoElement>(null)
   const hoverTimerRef = useRef<NodeJS.Timeout | null>(null)
   const imageLoaderManagerRef = useRef<ImageLoaderManager | null>(null)
+
+  // 解析EXIF数据获取Image Description
+  useEffect(() => {
+    const fetchExifImageDescription = async () => {
+      try {
+        const response = await fetch(currentPhoto.originalUrl);
+        const blob = await response.blob();
+        const exifData = await ExifToolManager.parse(blob, currentPhoto.s3Key);
+
+        if (typeof exifData === 'string') {
+          const lines = exifData.split('\n');
+          const descriptionLine = lines.find(line =>
+            line.trim().startsWith('Image Description')
+          );
+          if (descriptionLine) {
+            const description = descriptionLine.split(':', 2)[1]?.trim() || '';
+            setImageDescription(description);
+          }
+        } else if (typeof exifData === 'object' && exifData !== null) {
+          setImageDescription(exifData['Image Description'] || exifData.imageDescription || '');
+        }
+      } catch (error) {
+        console.error('获取EXIF Image Description失败:', error);
+      }
+    };
+
+    if (imageLoaded) {
+      fetchExifImageDescription();
+    }
+  }, [imageLoaded, currentPhoto]);
 
   const handleImageLoad = () => {
     setImageLoaded(true)
@@ -325,6 +357,11 @@ export const MasonryPhotoItem = ({
               {data.description && (
                 <p className="mb-2 line-clamp-2 text-sm text-white/80 opacity-0 group-hover:opacity-100">
                   {data.description}
+                </p>
+              )}
+              {imageDescription && (
+                <p className="mb-2 line-clamp-2 text-sm text-white/80 opacity-0 group-hover:opacity-100">
+                  {imageDescription}
                 </p>
               )}
 
