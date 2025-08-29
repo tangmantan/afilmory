@@ -21,10 +21,7 @@ interface RawExifViewerProps {
 type ParsedExifData = Record<string, string | number | boolean | null>
 
 const parseRawExifData = (rawData: string): ParsedExifData => {
-  // 仅进行UTF-8编码转换以处理中文显示问题
-  const decoder = new TextDecoder('utf-8', { fatal: false });
-  const decodedData = decoder.decode(new Uint8Array(rawData.split('').map(c => c.charCodeAt(0))));
-  const lines = decodedData.split('\n').filter((line) => line.trim())
+  const lines = rawData.split('\n').filter((line) => line.trim())
   const data: ParsedExifData = {}
 
   for (const line of lines) {
