@@ -21,14 +21,10 @@ interface RawExifViewerProps {
 type ParsedExifData = Record<string, string | number | boolean | null>
 
 const parseRawExifData = (rawData: string): ParsedExifData => {
-  // 处理编码问题，使用UTF-8解码并替换无效字符
+  // 仅进行UTF-8编码转换以处理中文显示问题
   const decoder = new TextDecoder('utf-8', { fatal: false });
   const decodedData = decoder.decode(new Uint8Array(rawData.split('').map(c => c.charCodeAt(0))));
-
-  // 清洗数据，移除控制字符和无效序列
-  const cleanedData = decodedData.replace(/[\x00-\x1F\x7F]/g, '').replace(/�/g, '');
-
-  const lines = cleanedData.split('\n').filter((line) => line.trim())
+  const lines = decodedData.split('\n').filter((line) => line.trim())
   const data: ParsedExifData = {}
 
   for (const line of lines) {
