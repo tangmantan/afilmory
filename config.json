@@ -12,5 +12,9 @@
   "map": [
     "maplibre"
   ],
-  "mapStyle": "builtin"
+  "mapStyle": "builtin",
+  "social": {
+    "github": "https://github.com/tangmantan",
+    "rss": true
+  }
 }
