@@ -151,14 +151,11 @@ export function PhotoItem({ photo, className }: PhotoItemProps) {
             {/* Tags */}
             {photo.tags && photo.tags.length > 0 && (
               <div className="flex flex-wrap gap-1.5">
-                {typeof window !== 'undefined' && console.log('Original tags:', photo.tags)}
-                {typeof window !== 'undefined' && console.log('Filtered tags:', photo.tags.filter((_, index) => index !== 0))}
-                {/* {photo.tags.map((tag) => ( */}
-                {photo.tags.filter((_, index) => index !== 0).map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full bg-white/20 px-2 py-0.5 text-xs text-white/90 opacity-0 backdrop-blur-sm group-hover:opacity-100"
-                  >
+                {photo.tags.map((tag, index) => (
+                    <span
+                      key={tag}
+                      className={`rounded-full bg-white/20 px-2 py-0.5 text-xs text-white/90 opacity-0 backdrop-blur-sm group-hover:opacity-100 ${index === 0 ? 'hidden' : ''}`}
+                    >
                     {tag}
                   </span>
                 ))}
