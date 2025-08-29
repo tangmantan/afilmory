@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { m } from 'motion/react'
 import { Fragment, useCallback, useEffect, useRef, useState } from 'react'
-import { ExifToolManager } from '@/lib/exiftool/exiftool'
+import { ExifToolManager } from '~/lib/exiftool/exiftool';
 import { useTranslation } from 'react-i18next'
 
 import { Thumbhash } from '~/components/ui/thumbhash'
@@ -52,9 +52,9 @@ export const MasonryPhotoItem = ({
   useEffect(() => {
     const fetchExifImageDescription = async () => {
       try {
-        const response = await fetch(currentPhoto.originalUrl);
+        const response = await fetch(data.originalUrl);
         const blob = await response.blob();
-        const exifData = await ExifToolManager.parse(blob, currentPhoto.s3Key);
+        const exifData = await ExifToolManager.parse(blob, data.s3Key);
 
         if (typeof exifData === 'string') {
           const lines = exifData.split('\n');
@@ -76,7 +76,7 @@ export const MasonryPhotoItem = ({
     if (imageLoaded) {
       fetchExifImageDescription();
     }
-  }, [imageLoaded, currentPhoto]);
+  }, [imageLoaded, data]);
 
   const handleImageLoad = () => {
     setImageLoaded(true)
