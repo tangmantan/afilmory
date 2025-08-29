@@ -34,7 +34,7 @@ export const Component = () => {
   return (
     <>
       <PhotosProvider photos={photos}>
-        {/* {siteConfig.accentColor && (
+        {siteConfig.accentColor && (
           <style
             dangerouslySetInnerHTML={{
               __html: `
@@ -46,7 +46,7 @@ export const Component = () => {
           `,
             }}
           />
-        )} */}
+        )}
         {isMobile ? (
           <ScrollElementContext value={document.body}>
             <MasonryRoot />

@@ -2,7 +2,7 @@
 - [中文文档](README.md) | [English Docs](README_en.md)
 
 <p align="center">
-  <img src="./afilmory-readme.jpg" alt="Afilmory" width="100%" />
+  <img src="./afilmory-readme.webp" alt="宣传图" width="100%" />
 </p>
 
 # <p align="center">Afilmory</p>

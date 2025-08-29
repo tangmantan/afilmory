@@ -2,7 +2,7 @@
 - [中文文档](README.md) | [English Docs](README_en.md)
 
 <p align="center">
-  <img src="https://github.com/Afilmory/assets/blob/main/afilmory-readme.webp?raw=true" alt="Afilmory" width="100%" />
+  <img src="./afilmory-readme.webp" alt="publicize image" width="100%" />
 </p>
 
 # <p align="center">Afilmory</p>
@@ -13,6 +13,7 @@ A modern photo gallery website built with React + TypeScript, supporting automat
 
 Live Photo Galleries:
 
+- https://theshot.tanmantang.com
 - https://afilmory.innei.in
 - https://gallery.mxte.cc
 - https://photography.pseudoyu.com
