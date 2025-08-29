@@ -152,10 +152,10 @@ export function PhotoItem({ photo, className }: PhotoItemProps) {
             {photo.tags && photo.tags.length > 0 && (
               <div className="flex flex-wrap gap-1.5">
                 {photo.tags.map((tag, index) => (
-                    <span
-                      key={tag}
-                      className={`rounded-full bg-white/20 px-2 py-0.5 text-xs text-white/90 opacity-0 backdrop-blur-sm group-hover:opacity-100 ${index === 0 ? 'hidden' : ''}`}
-                    >
+                  <span
+                    key={tag}
+                    className={`rounded-full bg-white/20 px-2 py-0.5 text-xs text-white/90 opacity-0 backdrop-blur-sm group-hover:opacity-100 hidden`}
+                  >
                     {tag}
                   </span>
                 ))}

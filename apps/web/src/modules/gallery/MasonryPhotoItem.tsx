@@ -342,7 +342,8 @@ export const MasonryPhotoItem = ({
               {/* Tags */}
               {data.tags && data.tags.length > 0 && (
                 <div className="flex flex-wrap gap-1.5">
-                  {data.tags.map((tag) => (
+                  {/* {data.tags.map((tag) => ( */}
+                  {data.tags.slice(1).map((tag) => (
                     <span
                       key={tag}
                       className="rounded-full bg-white/20 px-2 py-0.5 text-xs text-white/90 opacity-0 backdrop-blur-sm group-hover:opacity-100"
