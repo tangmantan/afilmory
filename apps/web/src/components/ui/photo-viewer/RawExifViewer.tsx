@@ -286,7 +286,6 @@ const categories = {
     'Artist',
     'Rating',
     'User Comment',
-    'Image Description',
   ],
 }
 
