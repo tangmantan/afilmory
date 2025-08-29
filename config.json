@@ -3,7 +3,6 @@
   "title": "懒洋洋喝咖啡",
   "description": "记录生活中的美好瞬间，通过我的镜头记录每日的温暖和情感。",
   "url": "",
-  "accentColor": "#007bff",
   "author": {
     "name": "谭满堂",
     "url": "https://tanmantang.com/",
@@ -14,7 +13,7 @@
   ],
   "mapStyle": "builtin",
   "social": {
-    "github": "https://github.com/tangmantan",
-    "rss": true
+    "github": "tangmantan/afilmory",
+    "gitee": "tanmantang/afilmory"
   }
 }

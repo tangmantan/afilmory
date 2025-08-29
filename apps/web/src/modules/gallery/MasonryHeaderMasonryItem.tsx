@@ -73,6 +73,17 @@ export const MasonryHeaderMasonryItem = ({
                 <i className="i-mingcute-github-fill text-sm" />
               </a>
             )}
+            {siteConfig.social.gitee && (
+              <a
+                href={`https://gitee.com/${siteConfig.social.gitee}`}
+                target="_blank"
+                rel="noreferrer"
+                className="text-text-secondary flex items-center justify-center p-2 duration-200 hover:text-[#E7E8E8]"
+                title="Gitee"
+              >
+                <i className="i-mingcute-gitee-fill text-sm" />
+              </a>
+            )}
             {siteConfig.social.twitter && (
               <a
                 href={`https://twitter.com/${siteConfig.social.twitter.replace('@', '')}`}
