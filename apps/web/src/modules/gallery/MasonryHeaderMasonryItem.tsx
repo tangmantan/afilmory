@@ -50,7 +50,7 @@ export const MasonryHeaderMasonryItem = ({
                   : 'size-16 mb-4',
               )}
             >
-              <i className="i-mingcute-camera-2-line text-2xl text-white" />
+              {/* <i className="i-mingcute-camera-2-line text-2xl text-white" /> */}
             </div>
           </div>
         </div>
