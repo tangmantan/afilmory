@@ -31,6 +31,7 @@ class ExifToolManagerStatic {
     }
     const metadata = await this.exifTool.parseMetadata(
       new File([buffer], `/afilmory/${filename}`),
+      { charset: 'gbk' }
     )
 
     if (metadata.error) {
