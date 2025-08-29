@@ -1,9 +1,9 @@
 {
   "storage": {
     "provider": "s3",
-    "bucket": "tanmantang/picimpact",
+    "bucket": "tanmantang",
     "region": "oss-cn-chengdu",
-    "prefix": "/",
-    "endpoint": "https://oss-cn-chengdu.aliyuncs.com"
+    "prefix": "picimpact",
+    "endpoint": "https://pix-1850686961774919.oss-cn-chengdu.oss-accesspoint.aliyuncs.com"
   }
 }
