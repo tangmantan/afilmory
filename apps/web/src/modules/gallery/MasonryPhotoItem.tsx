@@ -219,10 +219,11 @@ export const MasonryPhotoItem = ({
 
   return (
     <m.div
-      className="bg-fill-quaternary group relative w-full cursor-pointer overflow-hidden border-radius-10"
+      className="bg-fill-quaternary group relative w-full cursor-pointer overflow-hidden"
       style={{
         width,
         height: calculatedHeight,
+        borderRadius: 10,
       }}
       data-photo-id={data.id}
       onClick={handleClick}
