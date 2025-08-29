@@ -38,8 +38,7 @@ const parseRawExifData = (rawData: string): ParsedExifData => {
     const key = line.slice(0, Math.max(0, colonIndex)).trim()
     const value = line.slice(Math.max(0, colonIndex + 1)).trim()
 
-    // 过滤空值和纯空白值
-    if (key && value && value.trim() !== '') {
+    if (key && value) {
       data[key] = value
     }
   }
