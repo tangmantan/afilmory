@@ -1,8 +1,8 @@
 
-- [English](README_en.md)
+- [中文文档](README.md) | [English Docs](README_en.md)
 
 <p align="center">
-  <img src="https://github.com/Afilmory/assets/blob/main/afilmory-readme.webp?raw=true" alt="Afilmory" width="100%" />
+  <img src="./afilmory-readme.jpg" alt="Afilmory" width="100%" />
 </p>
 
 # <p align="center">Afilmory</p>
@@ -13,6 +13,7 @@ Afilmory (读音 /əˈfɪlməri/, "uh-FIL-muh-ree") 是一个为个人摄影网�
 
 在线照片画廊示例：
 
+- https://theshot.tanmantang.com
 - https://afilmory.innei.in
 - https://gallery.mxte.cc
 - https://photography.pseudoyu.com

@@ -1,5 +1,5 @@
 
-- [中文](README.md)
+- [中文文档](README.md) | [English Docs](README_en.md)
 
 <p align="center">
   <img src="https://github.com/Afilmory/assets/blob/main/afilmory-readme.webp?raw=true" alt="Afilmory" width="100%" />

@@ -1,3 +1,5 @@
+- [中文说明](CLAUDE.md) | [English Docs](CLAUDE_en.md)
+
 # CLAUDE.md
 
 本文档为 Claude Code (claude.ai/code) 在处理此仓库代码时提供指导。

@@ -7,7 +7,7 @@ export interface SiteConfig {
   title: string
   description: string
   url: string
-  accentColor: string
+  // accentColor: string
   author: Author
   social?: Social
   feed?: Feed
@@ -48,7 +48,7 @@ const defaultConfig: SiteConfig = {
   description:
     'Capturing beautiful moments in life, documenting daily warmth and emotions through my lens.',
   url: 'https://afilmory.innei.in',
-  accentColor: '#007bff',
+  // accentColor: '#007bff',
   author: {
     name: 'Innei',
     url: 'https://innei.in/',
