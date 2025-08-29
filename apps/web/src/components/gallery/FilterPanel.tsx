@@ -319,7 +319,7 @@ export const FilterPanel = () => {
         {/* Reset all filters */}
         <Button
           variant="ghost"
-          className="opacity-80"
+          className="opacity-80 pointer-events-auto"
           size="xs"
           onClick={() => {
             setGallerySetting((prev) => ({
@@ -336,7 +336,7 @@ export const FilterPanel = () => {
           }}
         >
           <i className="i-mingcute-refresh-1-line mr-1 text-sm" />
-          Reset
+          {t('tmt.reset')}
         </Button>
       </div>
 
