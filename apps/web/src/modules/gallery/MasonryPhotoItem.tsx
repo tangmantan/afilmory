@@ -219,7 +219,7 @@ export const MasonryPhotoItem = ({
 
   return (
     <m.div
-      className="bg-fill-quaternary group relative w-full cursor-pointer overflow-hidden"
+      className="bg-fill-quaternary group relative w-full cursor-pointer overflow-hidden border-radius-10"
       style={{
         width,
         height: calculatedHeight,
