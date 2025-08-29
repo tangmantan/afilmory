@@ -39,6 +39,7 @@ interface Social {
   twitter?: string
   github?: string
   gitee?: string
+  douyin?: string
   rss?: boolean
 }
 
