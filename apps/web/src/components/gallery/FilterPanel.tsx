@@ -270,9 +270,9 @@ export const FilterPanel = () => {
         searchPlaceholder: '',
         emptyMessage: '',
         notFoundMessage: '',
-        onToggle: () => {},
+        onToggle: () => { },
         onClear: clearRatings,
-        onSearchChange: () => {},
+        onSearchChange: () => { },
       },
     ],
     [
@@ -417,7 +417,7 @@ export const FilterPanel = () => {
           </div>
         ) : (
           <div className="pb-safe-offset-4 lg:pb-safe -mx-4 -mb-4 max-h-64 overflow-y-auto px-4 lg:mx-0 lg:mb-0 lg:px-0">
-            {(currentTab.filteredData).map((item) => (
+            {(currentTab.filteredData.slice(1)).map((item) => (
               <div
                 key={item}
                 onClick={() => currentTab.onToggle(item)}
