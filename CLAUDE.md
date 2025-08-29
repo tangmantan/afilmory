@@ -1,135 +1,135 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+本文档为 Claude Code (claude.ai/code) 在处理此仓库代码时提供指导。
 
-## Commands
+## 命令
 
-### Development Commands
+### 开发命令
 ```bash
-# Start development server (runs both web and SSR)
+# 启动开发服务器（同时运行 web 和 SSR）
 pnpm dev
 
-# Start only web development server
+# 仅启动 web 开发服务器
 pnpm --filter web dev
 
-# Start only SSR development server
+# 仅启动 SSR 开发服务器
 pnpm --filter @afilmory/ssr dev
 
-# Build production version
+# 构建生产版本
 pnpm build
 
-# Build manifest from storage (generates photo metadata)
+# 从存储构建清单（生成照片元数据）
 pnpm run build:manifest
 
-# Force rebuild all photos and metadata
+# 强制重新构建所有照片和元数据
 pnpm run build:manifest -- --force
 
-# Force regenerate thumbnails only
+# 仅强制重新生成缩略图
 pnpm run build:manifest -- --force-thumbnails
 
-# Force regenerate manifest only
+# 仅强制重新生成清单
 pnpm run build:manifest -- --force-manifest
 ```
 
-### Database Commands (SSR app)
+### 数据库命令（SSR 应用）
 ```bash
-# Generate database migrations
+# 生成数据库迁移
 pnpm --filter @afilmory/ssr db:generate
 
-# Run database migrations
+# 运行数据库迁移
 pnpm --filter @afilmory/ssr db:migrate
 ```
 
-### Code Quality Commands
+### 代码质量命令
 ```bash
-# Lint and fix code
+# 代码检查并修复
 pnpm lint
 
-# Format code
+# 格式化代码
 pnpm format
 
-# Type check (web app)
+# 类型检查（web 应用）
 pnpm --filter web type-check
 ```
 
-## Architecture
+## 架构
 
-### Monorepo Structure
-This is a pnpm workspace with multiple applications and packages:
+### 单体仓库结构
+这是一个使用 pnpm 工作区的项目，包含多个应用和包：
 
-- `apps/web/` - Main frontend React application (Vite + React 19)
-- `apps/ssr/` - Next.js SSR application for server-side rendering and APIs
-- `packages/` - Shared packages and utilities
-- `packages/builder/` - Photo processing and manifest generation tool
-- `packages/webgl-viewer/` - WebGL-based photo viewer component
+- `apps/web/` - 主前端 React 应用（Vite + React 19）
+- `apps/ssr/` - Next.js SSR 应用，用于服务端渲染和 API
+- `packages/` - 共享包和工具
+- `packages/builder/` - 照片处理和清单生成工具
+- `packages/webgl-viewer/` - 基于 WebGL 的照片查看器组件
 
-### Key Technologies
-- **Frontend**: React 19, TypeScript, Vite, Tailwind CSS, Jotai (state), TanStack Query
-- **Backend**: Next.js 15, Drizzle ORM, PostgreSQL
-- **Image Processing**: Sharp, EXIF extraction, WebGL rendering
-- **Storage**: S3-compatible storage, GitHub storage support
-- **Build Tools**: pnpm workspaces, ESLint, Prettier
+### 关键技术
+- **前端**：React 19、TypeScript、Vite、Tailwind CSS、Jotai（状态管理）、TanStack Query
+- **后端**：Next.js 15、Drizzle ORM、PostgreSQL
+- **图像处理**：Sharp、EXIF 提取、WebGL 渲染
+- **存储**：S3 兼容存储、GitHub 存储支持
+- **构建工具**：pnpm 工作区、ESLint、Prettier
 
-### Configuration Files
-- `builder.config.json` - Photo processing and storage configuration
-- `config.json` - Site configuration (name, description, author, etc.)
-- `site.config.ts` - TypeScript site configuration with defaults
-- `env.ts` - Environment variables validation and types
+### 配置文件
+- `builder.config.json` - 照片处理和存储配置
+- `config.json` - 站点配置（名称、描述、作者等）
+- `site.config.ts` - 带默认值的 TypeScript 站点配置
+- `env.ts` - 环境变量验证和类型定义
 
-### Photo Processing Pipeline
-1. **Storage Sync**: Fetches photos from configured storage (S3/GitHub)
-2. **Format Conversion**: Converts HEIC, TIFF to web-compatible formats
-3. **Thumbnail Generation**: Creates multiple sizes for performance
-4. **EXIF Extraction**: Extracts camera settings and GPS data
-5. **Manifest Generation**: Creates `photos-manifest.json` with metadata
+### 照片处理流程
+1. **存储同步**：从配置的存储（S3/GitHub）获取照片
+2. **格式转换**：将 HEIC、TIFF 转换为网络兼容格式
+3. **缩略图生成**：创建多种尺寸以提高性能
+4. **EXIF 提取**：提取相机设置和 GPS 数据
+5. **清单生成**：创建包含元数据的 `photos-manifest.json`
 
-### Development Workflow
-- Web app runs on development server with hot reload
-- SSR app provides APIs and server-side rendering
-- Builder tool processes photos and generates metadata
-- Database migrations handle schema changes
+### 开发工作流程
+- Web 应用在开发服务器上运行，支持热重载
+- SSR 应用提供 API 和服务端渲染
+- Builder 工具处理照片并生成元数据
+- 数据库迁移处理架构变更
 
-### Code Quality Rules
-1. Avoid code duplication - extract common types and components
-2. Keep components focused - use hooks and component composition
-3. Follow React best practices - proper Context usage, state management
-4. Use TypeScript strictly - leverage type safety throughout
+### 代码质量规则
+1. 避免代码重复 - 提取通用类型和组件
+2. 保持组件专注 - 使用钩子和组件组合
+3. 遵循 React 最佳实践 - 正确使用 Context、状态管理
+4. 严格使用 TypeScript - 在整个项目中利用类型安全
 
-### i18n Guidelines
-- Use flat keys with `.` separation (e.g., `exif.camera.model`)
-- Support pluralization with `_one` and `_other` suffixes
-- Modify English first, then other languages (ESLint auto-removes unused keys)
-- Avoid nested key conflicts in flat structure
+### 国际化指南
+- 使用点分隔的扁平键（如 `exif.camera.model`）
+- 使用 `_one` 和 `_other` 后缀支持复数形式
+- 先修改英文，再修改其他语言（ESLint 自动移除未使用的键）
+- 避免扁平结构中的嵌套键冲突
 
-### Testing Strategy
-- Check README.md and package.json scripts for test commands
-- Verify builds work with `pnpm build`
-- Test photo processing with `pnpm run build:manifest`
-- Validate types with `pnpm --filter web type-check`
+### 测试策略
+- 查看 README.md 和 package.json 脚本获取测试命令
+- 使用 `pnpm build` 验证构建是否正常工作
+- 使用 `pnpm run build:manifest` 测试照片处理
+- 使用 `pnpm --filter web type-check` 验证类型
 
-## Cursor Rules Integration
+## Cursor 规则集成
 
-### Code Quality Standards
-- Avoid code duplication - extract common types and components when used multiple times
-- Keep components focused - use hooks and component splitting for large logic blocks
-- Master React philosophy - proper Context usage, component composition, state management to prevent re-renders
+### 代码质量标准
+- 避免代码重复 - 当多次使用时，提取通用类型和组件
+- 保持组件专注 - 对大型逻辑块使用钩子和组件拆分
+- 掌握 React 理念 - 正确使用 Context、组件组合、状态管理以防止不必要的重渲染
 
-### UI/UX Guidelines
-- Use Apple UIKit color system via tailwind-uikit-colors package
-- Prefer semantic color names: `text-primary`, `fill-secondary`, `material-thin`, etc.
-- Follow system colors: `red`, `blue`, `green`, `mint`, `teal`, `cyan`, `indigo`, `purple`, `pink`, `brown`, `gray`
-- Use material design principles with opacity-based fills and proper contrast
+### UI/UX 指南
+- 通过 tailwind-uikit-colors 包使用 Apple UIKit 色彩系统
+- 优先使用语义化颜色名称：`text-primary`、`fill-secondary`、`material-thin` 等
+- 遵循系统颜色：`red`、`blue`、`green`、`mint`、`teal`、`cyan`、`indigo`、`purple`、`pink`、`brown`、`gray`
+- 使用基于不透明度的填充和适当对比度的材料设计原则
 
-### i18n Development Rules
-- Use flat keys with dot notation: `exif.camera.model`
-- Support pluralization: `_one` and `_other` suffixes
-- Always modify English (`en.json`) first, then other languages
-- Avoid key conflicts in flat structure (e.g., `exif.custom.rendered` vs `exif.custom.rendered.custom`)
-- ESLint automatically removes unused keys from non-English files
+### 国际化开发规则
+- 使用点表示法的扁平键：`exif.camera.model`
+- 支持复数形式：`_one` 和 `_other` 后缀
+- 始终先修改英语（`en.json`），然后再修改其他语言
+- 避免扁平结构中的键冲突（例如 `exif.custom.rendered` 与 `exif.custom.rendered.custom`）
+- ESLint 自动从非英语文件中删除未使用的键
 
-## Important Notes
-- This is a photo gallery application that processes and displays photos from cloud storage
-- The builder tool handles complex image processing workflows
-- WebGL viewer provides high-performance photo viewing experience
-- Map integration shows photo locations from GPS EXIF data
-- Live Photo support for iOS/Apple device videos
+## 重要说明
+- 这是一个照片画廊应用，用于处理和显示来自云存储的照片
+- Builder 工具处理复杂的图像处理工作流
+- WebGL 查看器提供高性能的照片查看体验
+- 地图集成显示来自 GPS EXIF 数据的照片位置
+- 支持 iOS/Apple 设备视频的 Live Photo 功能
