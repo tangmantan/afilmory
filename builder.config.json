@@ -1,9 +1,9 @@
 {
   "storage": {
     "provider": "s3",
-    "bucket": "travelsfortmt",
+    "bucket": "tanmantang",
     "region": "oss-cn-chengdu",
-    "prefix": "/",
+    "prefix": "picimpact/",
     "endpoint": "https://oss-cn-chengdu.aliyuncs.com"
   }
 }
