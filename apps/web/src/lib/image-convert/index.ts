@@ -25,7 +25,7 @@ export class ImageConverterManager {
     strategy.getSupportedFormats().forEach((format) => {
       this.strategies.set(format, strategy)
     })
-    console.info(`Registered image converter strategy: ${strategy.getName()}`)
+    // console.info(`Registered image converter strategy: ${strategy.getName()}`)
   }
 
   /**
@@ -75,7 +75,7 @@ export class ImageConverterManager {
         return null
       }
 
-      console.info(`Detected file type: ${fileType.ext} (${fileType.mime})`)
+      // console.info(`Detected file type: ${fileType.ext} (${fileType.mime})`)
 
       // 直接根据 MIME 类型查找策略
       const strategy = this.strategies.get(fileType.mime)
@@ -96,7 +96,7 @@ export class ImageConverterManager {
         }
       }
 
-      console.info(`No strategy found for MIME type: ${fileType.mime}`)
+      // console.info(`No strategy found for MIME type: ${fileType.mime}`)
       return null
     } catch (error) {
       console.error('File type detection failed:', error)
@@ -115,7 +115,7 @@ export class ImageConverterManager {
     const strategy = await this.findSuitableStrategy(blob)
 
     if (!strategy) {
-      console.info('No conversion strategy needed for this image')
+      // console.info('No conversion strategy needed for this image')
       return null
     }
 

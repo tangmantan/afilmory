@@ -55,9 +55,9 @@ export class LRUCache<K, V> {
     // Add new item (most recently used)
     this.cache.set(key, value)
 
-    console.info(
-      `LRU Cache: Added ${String(key)}, cache size: ${this.cache.size}/${this.maxSize}`,
-    )
+    // console.info(
+    //   `LRU Cache: Added ${String(key)}, cache size: ${this.cache.size}/${this.maxSize}`,
+    // )
   }
 
   /**

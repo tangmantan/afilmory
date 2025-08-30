@@ -94,13 +94,11 @@ export class ImageLoaderManager {
       const isValidImage = fileType.mime.startsWith('image/')
 
       if (!isValidImage) {
-        console.warn(
-          `Invalid file type detected: ${fileType.ext} (${fileType.mime})`,
-        )
+        // console.warn(`Invalid file type detected: ${fileType.ext} (${fileType.mime})`,)
         return false
       }
 
-      console.info(`Valid image detected: ${fileType.ext} (${fileType.mime})`)
+      // console.info(`Valid image detected: ${fileType.ext} (${fileType.mime})`)
       return true
     } catch (error) {
       console.error('Failed to detect file type:', error)
@@ -325,9 +323,9 @@ export class ImageLoaderManager {
 
     // 缓存结果
     regularImageCache.set(cacheKey, result)
-    console.info(
-      `Regular image processed and cached: ${(blob.size / 1024).toFixed(1)}KB, URL: ${originalUrl}`,
-    )
+    // console.info(
+    //   `Regular image processed and cached: ${(blob.size / 1024).toFixed(1)}KB, URL: ${originalUrl}`,
+    // )
 
     // Hide loading indicator
     onLoadingStateUpdate?.({

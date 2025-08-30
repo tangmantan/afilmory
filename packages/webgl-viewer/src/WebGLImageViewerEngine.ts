@@ -413,7 +413,7 @@ export class WebGLImageViewerEngine extends ImageViewerEngineBase {
       this.loadImageResolve = resolve
       this.loadImageReject = reject
 
-      console.info('[Engine] Posting "load-image" to worker', this.worker)
+      // console.info('[Engine] Posting "load-image" to worker', this.worker)
       this.worker?.postMessage({
         type: 'load-image',
         payload: { url },
@@ -727,7 +727,7 @@ export class WebGLImageViewerEngine extends ImageViewerEngineBase {
         const tileCenterY = (y + 0.5) * tileHeightInImage
         const distance = Math.sqrt(
           Math.pow(tileCenterX - viewCenterX, 2) +
-            Math.pow(tileCenterY - viewCenterY, 2),
+          Math.pow(tileCenterY - viewCenterY, 2),
         )
 
         visibleTiles.push({
@@ -1231,7 +1231,7 @@ export class WebGLImageViewerEngine extends ImageViewerEngineBase {
       const touch2 = e.touches[1]
       this.lastTouchDistance = Math.sqrt(
         Math.pow(touch2.clientX - touch1.clientX, 2) +
-          Math.pow(touch2.clientY - touch1.clientY, 2),
+        Math.pow(touch2.clientY - touch1.clientY, 2),
       )
     }
   }
@@ -1260,7 +1260,7 @@ export class WebGLImageViewerEngine extends ImageViewerEngineBase {
       const touch2 = e.touches[1]
       const distance = Math.sqrt(
         Math.pow(touch2.clientX - touch1.clientX, 2) +
-          Math.pow(touch2.clientY - touch1.clientY, 2),
+        Math.pow(touch2.clientY - touch1.clientY, 2),
       )
 
       if (this.lastTouchDistance > 0) {
