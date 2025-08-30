@@ -15,7 +15,7 @@ export const gallerySettingAtom = atom({
   lensSearchQuery: '' as string, // 镜头搜索查询
   ratingSearchQuery: '' as string, // 评分搜索查询
   isTagsPanelOpen: false as boolean,
-  columns: 4 as number | 'auto', // 自定义列数，默认值为4
+  columns: 6 as number | 'auto', // 自定义列数，设置为6 默认auto
 })
 
 export const isExiftoolLoadedAtom = atom(false)
