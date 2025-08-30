@@ -240,12 +240,12 @@ export const PhotoViewer = ({
                     </div>
                   </m.div>
 
-                  {/* {!isMobile && injectConfig.useApi && (
+                  {!isMobile && injectConfig.useApi && (
                     <ReactionButton
                       photoId={currentPhoto.id}
                       className="absolute right-4 bottom-4"
                     />
-                  )} */}
+                  )}
 
                   {/* 加载指示器 */}
                   <LoadingIndicator ref={loadingIndicatorRef} />
