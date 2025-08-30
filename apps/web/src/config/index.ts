@@ -1,7 +1,7 @@
 import { merge } from 'es-toolkit/compat'
 
 const defaultInjectConfig = {
-  useApi: true,
+  useApi: false,
   useNext: false,
 }
 
