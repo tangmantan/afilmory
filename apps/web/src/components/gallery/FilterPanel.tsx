@@ -401,7 +401,7 @@ export const FilterPanel = () => {
 
         {/* Content area - Special handling for ratings tab */}
         {activeTab === 'ratings' ? (
-          <div className="pb-safe-offset-4 lg:pb-safe -mx-4 -mb-4 max-h-64 overflow-y-auto px-4 lg:mx-0 lg:mb-0 lg:px-0">
+          <div className="pb-safe-offset-4 lg:pb-safe -mx-4 -mb-4 max-h-64 overflow-y-auto px-4 lg:mx-0 lg:mb-0 lg:px-0 bg-white dark:bg-zinc-900">
             <StarRating
               value={gallerySetting.selectedRatings}
               onChange={setRating}
@@ -416,7 +416,7 @@ export const FilterPanel = () => {
             {currentTab.notFoundMessage}
           </div>
         ) : (
-          <div className="pb-safe-offset-4 lg:pb-safe -mx-4 -mb-4 max-h-64 overflow-y-auto px-4 lg:mx-0 lg:mb-0 lg:px-0">
+          <div className="pb-safe-offset-4 lg:pb-safe -mx-4 -mb-4 max-h-64 overflow-y-auto px-4 lg:mx-0 lg:mb-0 lg:px-0 bg-white dark:bg-zinc-900">
             {(currentTab.filteredData.slice(1)).map((item) => (
               <div
                 key={item}
