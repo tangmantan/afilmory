@@ -47,7 +47,7 @@ const defaultConfig: SiteConfig = {
   name: "懒洋洋喝咖啡",
   title: "懒洋洋喝咖啡",
   description: "记录生活中的美好瞬间，通过我的镜头记录每日的温暖和情感。",
-  url: 'https://theshot.tanmantang.com/',
+  url: 'https://pix.tanmantang.com/',
   accentColor: '#007bff',
   author: {
     name: 'tanmantang',

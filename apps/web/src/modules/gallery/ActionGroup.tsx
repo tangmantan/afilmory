@@ -1,5 +1,5 @@
 import { useAtom, useSetAtom } from 'jotai'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router'
 import { Drawer } from 'vaul'
@@ -71,11 +71,6 @@ const ColumnsPanel = () => {
       columns,
     })
   }
-  useEffect(() => {
-    if (gallerySetting.columns === 'auto') {
-      setGallerySetting(prev => ({ ...prev, columns: 4 }));
-    }
-  }, []);
   // 根据设备类型提供不同的列数范围
   const columnRange = isMobile
     ? { min: 2, max: 4 } // 移动端适合的列数范围
