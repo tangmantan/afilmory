@@ -401,7 +401,7 @@ export const FilterPanel = () => {
 
         {/* Content area - Special handling for ratings tab */}
         {activeTab === 'ratings' ? (
-          <div className="pb-safe-offset-4 lg:pb-safe -mx-4 -mb-4 max-h-64 overflow-y-auto px-4 lg:mx-0 lg:mb-0 lg:px-0 bg-white dark:bg-zinc-900">
+          <div className="pb-safe-offset-4 lg:pb-safe -mx-4 -mb-4 max-h-64 overflow-y-auto px-4 lg:mx-0 lg:mb-0 lg:px-0">
             <StarRating
               value={gallerySetting.selectedRatings}
               onChange={setRating}
@@ -416,7 +416,7 @@ export const FilterPanel = () => {
             {currentTab.notFoundMessage}
           </div>
         ) : (
-          <div className="pb-safe-offset-4 lg:pb-safe -mx-4 -mb-4 max-h-64 overflow-y-auto px-4 lg:mx-0 lg:mb-0 lg:px-0 bg-white dark:bg-zinc-900">
+          <div className="pb-safe-offset-4 lg:pb-safe -mx-4 -mb-4 max-h-64 overflow-y-auto px-4 lg:mx-0 lg:mb-0 lg:px-0">
             {(currentTab.filteredData.slice(1)).map((item) => (
               <div
                 key={item}
@@ -472,7 +472,7 @@ const StarRating = ({
                 'text-2xl',
                 rating <= (hoveredRating ?? value ?? 0)
                   ? 'i-mingcute-star-fill text-yellow-400'
-                  : 'i-mingcute-star-line text-gray-300 dark:text-gray-600',
+                  : 'i-mingcute-star-line text-gray-300 dark:text-gray-400',
               )}
             />
           </button>
