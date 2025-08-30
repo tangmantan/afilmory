@@ -1,5 +1,5 @@
 import { useAtom, useSetAtom } from 'jotai'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router'
 import { Drawer } from 'vaul'
@@ -71,6 +71,11 @@ const ColumnsPanel = () => {
       columns,
     })
   }
+  useEffect(() => {
+    if (gallerySetting.columns === 'auto') {
+      setGallerySetting(prev => ({ ...prev, columns: 4 }));
+    }
+  }, []);
   // 根据设备类型提供不同的列数范围
   const columnRange = isMobile
     ? { min: 2, max: 4 } // 移动端适合的列数范围
@@ -166,7 +171,7 @@ const DesktopActionButton = ({
           icon={icon}
           title={title}
           badge={badge}
-          onClick={() => {}}
+          onClick={() => { }}
         />
       </DropdownMenuTrigger>
       <DropdownMenuContent align="center" className={contentClassName}>
@@ -298,10 +303,10 @@ export const ActionGroup = () => {
           gallerySetting.selectedTags.length +
             gallerySetting.selectedCameras.length +
             gallerySetting.selectedLenses.length >
-          0
+            0
             ? gallerySetting.selectedTags.length +
-              gallerySetting.selectedCameras.length +
-              gallerySetting.selectedLenses.length
+            gallerySetting.selectedCameras.length +
+            gallerySetting.selectedLenses.length
             : undefined
         }
         // 使用全局状态实现滚动时自动收起标签面板
